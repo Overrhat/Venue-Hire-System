@@ -51,10 +51,16 @@ public class VenueHireSystem {
       default:
         MessageCli.NUMBER_VENUES.printMessage("are", Integer.toString(venueNumber), "s");
         break;
-  
-        // Print all the venue list
-
     }
+
+      // Print all the venue list
+      for (Venue venue : venueList) {
+        String name = venue.getVenueName();
+        String code = venue.getVenueCode();
+        String capacity = Integer.toString(venue.getCapacity());
+        String hireFee = Integer.toString(venue.getHireFee());
+        MessageCli.VENUE_ENTRY.printMessage(name, code, capacity, hireFee);
+      }
   }
 
   public void createVenue(
