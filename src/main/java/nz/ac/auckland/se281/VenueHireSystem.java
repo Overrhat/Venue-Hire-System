@@ -68,8 +68,9 @@ public class VenueHireSystem {
         // checking if there is any existing same code in the list 
         for (Venue venue : venueList) {
           String code = venue.getVenueCode();
+          String name = venue.getVenueName();
           if (code.equals(venueCode)) {
-            MessageCli.VENUE_NOT_CREATED_CODE_EXISTS.printMessage(code, code);
+            MessageCli.VENUE_NOT_CREATED_CODE_EXISTS.printMessage(code, name);
             return;
           }
         }
