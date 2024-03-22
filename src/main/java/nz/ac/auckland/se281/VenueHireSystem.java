@@ -7,18 +7,9 @@ import nz.ac.auckland.se281.Types.FloralType;
 
 public class VenueHireSystem {
 
-  private ArrayList venueList = new ArrayList<>();
-  private String venueName;
-  private String venueCode;
-  private int capacity;
-  private int hireFee;
+  private ArrayList<Venue> venueList = new ArrayList<Venue>();
 
   public VenueHireSystem() {
-    // this.venueName = venueName;
-    // this.venueCode = venueCode;
-    // this.capacity = Integer.parseInt(capacityInput);
-    // this.hireFee = Integer.parseInt(hireFeeInput);
-    // MessageCli.VENUE_SUCCESSFULLY_CREATED.printMessage(venueName, venueCode);
   }
 
   public void printVenues() {
@@ -37,38 +28,76 @@ public class VenueHireSystem {
         MessageCli.NUMBER_VENUES.printMessage("are", "two", "s");
         break;
       case 3:
-        MessageCli.NUMBER_VENUES.printMessage("are", "one", "s");
+        MessageCli.NUMBER_VENUES.printMessage("are", "three", "s");
         break;
       case 4:
-        MessageCli.NUMBER_VENUES.printMessage("are", "one", "s");
+        MessageCli.NUMBER_VENUES.printMessage("are", "four", "s");
         break;
       case 5:
-        MessageCli.NUMBER_VENUES.printMessage("are", "one", "s");
+        MessageCli.NUMBER_VENUES.printMessage("are", "five", "s");
         break;
       case 6:
-        MessageCli.NUMBER_VENUES.printMessage("are", "one", "s");
+        MessageCli.NUMBER_VENUES.printMessage("are", "six", "s");
         break;
       case 7:
-        MessageCli.NUMBER_VENUES.printMessage("are", "one", "s");
+        MessageCli.NUMBER_VENUES.printMessage("are", "seven", "s");
         break;
       case 8:
-        MessageCli.NUMBER_VENUES.printMessage("are", "one", "s");
+        MessageCli.NUMBER_VENUES.printMessage("are", "eight", "s");
         break;
       case 9:
-        MessageCli.NUMBER_VENUES.printMessage("are", "one", "s");
+        MessageCli.NUMBER_VENUES.printMessage("are", "nine", "s");
         break;
       default:
-        MessageCli.NUMBER_VENUES.printMessage("are", "one", "s");
+        MessageCli.NUMBER_VENUES.printMessage("are", Integer.toString(venueNumber), "s");
         break;
   
         // Print all the venue list
-        
+
     }
   }
 
   public void createVenue(
       String venueName, String venueCode, String capacityInput, String hireFeeInput) {
+        // checking if there is any existing same code in the list 
+        for (Venue venue : venueList) {
+          String code = venue.getVenueCode();
+          if (code.equals(venueCode)) {
+            MessageCli.VENUE_NOT_CREATED_CODE_EXISTS.printMessage(code, code);
+            return;
+          }
+        }
+
+        // checking if hireFeeInput is a valid numebr
+        try {
+          Integer.parseInt(hireFeeInput);
+        } catch (NumberFormatException e) {
+          MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("hire fee", "");
+          return;
+        }
+
+        // checking if capacityInput is a valid number
+        try {
+          Integer.parseInt(capacityInput);
+        } catch (NumberFormatException e) {
+          MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("capacity", "");
+          return;
+        }
+        if (Integer.parseInt(capacityInput) < 0) {
+          MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("capacity", " positive");
+          return;
+        }
         
+        // checking if the venueName is valid 
+        if (venueName.isEmpty() || venueName.equals(" ")) {
+          MessageCli.VENUE_NOT_CREATED_EMPTY_NAME.printMessage();
+          return;
+        }
+
+        // Now all the inputs have been checked that they are valid so create the venue
+        Venue venue = new Venue(venueName, venueCode, capacityInput, hireFeeInput);
+        venueList.add(venue);
+        MessageCli.VENUE_SUCCESSFULLY_CREATED.printMessage(venueName, venueCode);
   }
 
   public void setSystemDate(String dateInput) {
