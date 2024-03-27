@@ -80,6 +80,10 @@ public class VenueHireSystem {
       MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("hire fee", "");
       return;
     }
+    if (Integer.parseInt(hireFeeInput) < 0 || Integer.parseInt(hireFeeInput) == 0) {
+      MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("hire fee", " positive");
+      return;
+    }
 
     // checking if capacityInput is a valid number
     try {
