@@ -88,7 +88,7 @@ public class VenueHireSystem {
       MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("capacity", "");
       return;
     }
-    if (Integer.parseInt(capacityInput) < 0) {
+    if (Integer.parseInt(capacityInput) < 0 || Integer.parseInt(capacityInput) == 0) {
       MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("capacity", " positive");
       return;
     }
