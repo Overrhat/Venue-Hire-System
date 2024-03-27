@@ -20,7 +20,8 @@ public class Venue {
 
   public String getVenueCode() {
     return this.venueCode;
-  } 
+  }
+
   public int getCapacity() {
     return this.capacity;
   }
