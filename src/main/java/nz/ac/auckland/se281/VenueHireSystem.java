@@ -7,7 +7,7 @@ import nz.ac.auckland.se281.Types.FloralType;
 public class VenueHireSystem {
 
   private ArrayList<Venue> venueList = new ArrayList<Venue>();
-  private String systemDate;
+  private String systemDate = "";
 
   public VenueHireSystem() {}
 
