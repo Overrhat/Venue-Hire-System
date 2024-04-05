@@ -119,6 +119,8 @@ public class VenueHireSystem {
     // Checking if the system's date has not been set
     if (this.systemDate.isEmpty()) {
       MessageCli.CURRENT_DATE.printMessage("not set");
+    } else {
+      MessageCli.CURRENT_DATE.printMessage(systemDate); // printing the system date
     }
   }
 
