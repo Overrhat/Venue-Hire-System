@@ -116,7 +116,10 @@ public class VenueHireSystem {
   }
 
   public void printSystemDate() {
-    // TODO implement this method
+    // Checking if the system's date has not been set
+    if (this.systemDate.isEmpty()) {
+      MessageCli.CURRENT_DATE.printMessage("not set");
+    }
   }
 
   public void makeBooking(String[] options) {
