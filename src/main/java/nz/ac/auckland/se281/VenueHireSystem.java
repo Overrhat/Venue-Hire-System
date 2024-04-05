@@ -130,6 +130,11 @@ public class VenueHireSystem {
     if (systemDate.isEmpty()) {
       MessageCli.BOOKING_NOT_MADE_DATE_NOT_SET.printMessage();
     }
+
+    // Checks if there are no venues in the system
+    if (venueList.isEmpty()) {
+      MessageCli.BOOKING_NOT_MADE_NO_VENUES.printMessage();
+    }
   }
 
   public void printBookings(String venueCode) {
