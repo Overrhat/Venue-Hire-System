@@ -153,7 +153,25 @@ public class VenueHireSystem {
       return;
     }
 
+    // Get a Venue name
+    String venueName = "";
+    for (Venue venue : venueList) {
+      String code = venue.getVenueCode();
+      if (code.equals(options[0])) {
+        venueName = venue.getVenueName(); // Find the venueName
+        break;
+      }
+    }
+
     // Checks if the venue is available on the specified date
+    for (Booking booking : bookingsList) {
+      String code = booking.getVenueCode();
+      String bookingDate = booking.getDate();
+      if (bookingDate.equals(options[1]) && code.equals(options[0])) {
+        MessageCli.BOOKING_NOT_MADE_VENUE_ALREADY_BOOKED.printMessage(venueName, options[1]);
+        return;
+      }
+    }
 
     // Checks if the booking date is in past (reference to the systemDate)
 
@@ -188,15 +206,6 @@ public class VenueHireSystem {
     bookingsList.add(booking);
 
     // Print the succesful created booking
-    String venueName = "";
-    for (Venue venue : venueList) {
-      String code = venue.getVenueCode();
-      if (code.equals(options[0])) {
-        venueName = venue.getVenueName(); // Find the venueName
-        break;
-      }
-    }
-
     MessageCli.MAKE_BOOKING_SUCCESSFUL.printMessage(reference, venueName, options[1], newAttendees);
   }
 
