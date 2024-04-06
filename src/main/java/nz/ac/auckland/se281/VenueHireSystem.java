@@ -8,6 +8,7 @@ public class VenueHireSystem {
 
   private ArrayList<Venue> venueList = new ArrayList<Venue>();
   private String systemDate = "";
+  private ArrayList<Booking> bookingsList = new ArrayList<Booking>();
 
   public VenueHireSystem() {}
 
@@ -155,7 +156,12 @@ public class VenueHireSystem {
     // Make a booking
     // Check the venue capacity and the number of attendence
 
+    // Generate an instance of a Booking with BookingReference Generator
+    String reference = BookingReferenceGenerator.generateBookingReference();
+    Booking booking = new Booking(reference, options[0], options[1], options[2], options[3]);
+
     // Add to the booking list
+    bookingsList.add(booking);
 
     // Print the succesful created booking
 
