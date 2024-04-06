@@ -15,4 +15,24 @@ public class Booking {
     this.email = email;
     this.attendees = attendees;
   }
+
+  public String getReference() {
+    return this.reference;
+  }
+
+  public String getVenueCode() {
+    return this.venueCode;
+  }
+
+  public String getDate() {
+    return this.date;
+  }
+
+  public String getEmail() {
+    return this.email;
+  }
+
+  public String getAttendees() {
+    return this.attendees;
+  }
 }
