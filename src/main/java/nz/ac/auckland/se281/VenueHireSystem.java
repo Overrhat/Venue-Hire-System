@@ -172,6 +172,7 @@ public class VenueHireSystem {
       String code = venue.getVenueCode();
       if (code == options[0]) {
         venueName = venue.getVenueName(); // Find the venueName
+        break;
       }
     }
 
