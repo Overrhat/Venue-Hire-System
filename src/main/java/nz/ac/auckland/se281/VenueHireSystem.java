@@ -137,6 +137,16 @@ public class VenueHireSystem {
     }
 
     // Checks if the venue code exists
+    Boolean isCodeFake = true;
+    for (Venue venue : venueList) {
+      String code = venue.getVenueCode();
+      if (code == options[1]) {
+        isCodeFake = false;
+      }
+    }
+    if (isCodeFake == true) {
+      MessageCli.BOOKING_NOT_MADE_VENUE_NOT_FOUND.printMessage(options[1]);
+    }
 
     // Checks if the venue is available on the specified date
 
