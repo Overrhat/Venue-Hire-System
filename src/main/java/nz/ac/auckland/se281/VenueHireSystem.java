@@ -135,6 +135,12 @@ public class VenueHireSystem {
     if (venueList.isEmpty()) {
       MessageCli.BOOKING_NOT_MADE_NO_VENUES.printMessage();
     }
+
+    // Checks if the venue code exists
+
+    // Checks if the venue is available on the specified date
+
+    // Checks if the booking date is in past (reference to the systemDate)
   }
 
   public void printBookings(String venueCode) {
