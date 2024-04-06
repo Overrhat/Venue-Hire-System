@@ -159,10 +159,27 @@ public class VenueHireSystem {
 
     // Make a booking
     // Check the venue capacity and the number of attendence
+    int venueCapacity = 0;
+    String newAttendees = "";
+    int attendees = Integer.parseInt(options[3]);
+    for (Venue venue : venueList) {
+      String code = venue.getVenueCode();
+      if (code.equals(options[0])) {
+        venueCapacity = venue.getCapacity(); // Get the capacity;
+        break;
+      }
+    }
+    if (attendees > venueCapacity) {
+      newAttendees = Integer.toString(venueCapacity);
+    } else if (attendees < (0.25 * venueCapacity)) {
+      newAttendees = Integer.toString((int) (0.25 * venueCapacity));
+    } else {
+      newAttendees = options[3];
+    }
 
     // Generate an instance of a Booking with BookingReference Generator
     String reference = BookingReferenceGenerator.generateBookingReference();
-    Booking booking = new Booking(reference, options[0], options[1], options[2], options[3]);
+    Booking booking = new Booking(reference, options[0], options[1], options[2], newAttendees);
 
     // Add to the booking list
     bookingsList.add(booking);
@@ -177,7 +194,7 @@ public class VenueHireSystem {
       }
     }
 
-    MessageCli.MAKE_BOOKING_SUCCESSFUL.printMessage(reference, venueName, options[1], options[3]);
+    MessageCli.MAKE_BOOKING_SUCCESSFUL.printMessage(reference, venueName, options[1], newAttendees);
   }
 
   public void printBookings(String venueCode) {
