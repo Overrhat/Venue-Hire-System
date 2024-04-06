@@ -141,6 +141,14 @@ public class VenueHireSystem {
     // Checks if the venue is available on the specified date
 
     // Checks if the booking date is in past (reference to the systemDate)
+
+    // Make a booking
+    // Check the venue capacity and the number of attendence
+
+    // Add to the booking list
+
+    // Print the succesful created booking
+
   }
 
   public void printBookings(String venueCode) {
