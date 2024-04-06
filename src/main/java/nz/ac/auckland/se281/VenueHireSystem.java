@@ -171,8 +171,11 @@ public class VenueHireSystem {
     }
     if (attendees > venueCapacity) {
       newAttendees = Integer.toString(venueCapacity);
+      MessageCli.BOOKING_ATTENDEES_ADJUSTED.printMessage(options[3], newAttendees, newAttendees);
     } else if (attendees < (0.25 * venueCapacity)) {
       newAttendees = Integer.toString((int) (0.25 * venueCapacity));
+      MessageCli.BOOKING_ATTENDEES_ADJUSTED.printMessage(
+          options[3], newAttendees, Integer.toString(venueCapacity));
     } else {
       newAttendees = options[3];
     }
