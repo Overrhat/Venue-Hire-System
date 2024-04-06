@@ -143,11 +143,12 @@ public class VenueHireSystem {
     Boolean isCodeFake = true;
     for (Venue venue : venueList) {
       String code = venue.getVenueCode();
-      if (code == options[0]) {
+      if (code.equals(options[0])) {
         isCodeFake = false;
+        break;
       }
     }
-    if (isCodeFake == true) {
+    if (isCodeFake) {
       MessageCli.BOOKING_NOT_MADE_VENUE_NOT_FOUND.printMessage(options[0]);
       return;
     }
@@ -170,7 +171,7 @@ public class VenueHireSystem {
     String venueName = "";
     for (Venue venue : venueList) {
       String code = venue.getVenueCode();
-      if (code == options[0]) {
+      if (code.equals(options[0])) {
         venueName = venue.getVenueName(); // Find the venueName
         break;
       }
