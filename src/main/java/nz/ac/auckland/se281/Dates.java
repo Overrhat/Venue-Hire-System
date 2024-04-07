@@ -16,8 +16,7 @@ public class Dates {
   }
 
   public String getFullDates() {
-    this.fullDates =
-        Integer.toString(date) + "/" + Integer.toString(month) + "/" + Integer.toString(year);
+    this.fullDates = String.format("%02d/%02d/%04d", this.date, this.month, this.year);
     return this.fullDates;
   }
 
