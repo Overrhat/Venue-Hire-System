@@ -57,4 +57,9 @@ public class Dates {
       return false; // In this case it is the same date, thus it is not past
     }
   }
+
+  public String getNextDate() {
+    // Return the next date
+    return this.getFullDates();
+  }
 }
