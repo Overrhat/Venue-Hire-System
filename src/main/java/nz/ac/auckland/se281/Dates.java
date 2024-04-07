@@ -57,15 +57,15 @@ public class Dates {
     }
   }
 
-  public String getNextDate() {
+  public Dates getNextDate() {
     // Check if it's the end of the month
     if ((this.month == 4 || this.month == 6 || this.month == 9 || this.month == 11)
         && this.date == 30) {
       this.month++;
       this.date = 1;
     } else if (this.month == 2) { // February
-      if ((this.year % 4 == 0 && this.year % 100 != 0)
-          || (this.year % 400 == 0)) { // Leap year check
+      // Check if it's a leap year
+      if ((this.year % 4 == 0 && this.year % 100 != 0) || (this.year % 400 == 0)) {
         if (this.date == 29) {
           this.month++;
           this.date = 1;
@@ -78,8 +78,8 @@ public class Dates {
       }
     } else if (this.date == 31) { // End of month for months with 31 days
       if (this.month == 12) { // End of the year
-        this.year++; // Move to the next year
-        this.month = 1; // Reset month to January
+        this.year++;
+        this.month = 1;
       } else {
         this.month++;
       }
@@ -88,7 +88,9 @@ public class Dates {
       this.date++;
     }
 
-    // Return the next date
-    return this.getFullDates();
+    this.fullDates = String.format("%02d/%02d/%04d", this.date, this.month, this.year);
+
+    // Return the updated Dates object
+    return this;
   }
 }
