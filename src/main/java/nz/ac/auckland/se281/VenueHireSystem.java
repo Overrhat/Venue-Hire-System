@@ -174,6 +174,12 @@ public class VenueHireSystem {
     }
 
     // Checks if the booking date is in past (reference to the systemDate)
+    Dates system = new Dates(systemDate);
+    Dates bookingDate = new Dates(options[1]);
+    if (system.isOtherDatePast(bookingDate)) {
+      MessageCli.BOOKING_NOT_MADE_PAST_DATE.printMessage(options[1], systemDate);
+      return;
+    }
 
     // Make a booking
     // Check the venue capacity and the number of attendence
