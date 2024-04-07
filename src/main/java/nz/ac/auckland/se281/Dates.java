@@ -32,12 +32,27 @@ public class Dates {
   }
 
   public Boolean isOtherDatePast(Dates other) {
-    // Initialize the other date is past
-    Boolean isPast = true;
-
     // Check the year
+    if (this.year > other.getYear()) {
+      return true;
+    } else if (this.year < other.getYear()) {
+      return false;
+    }
 
-    // Return the result
-    return isPast;
+    // Check the month
+    if (this.month > other.getMonth()) {
+      return true;
+    } else if (this.month < other.getMonth()) {
+      return false;
+    }
+
+    // Check the date
+    if (this.date > other.getDate()) {
+      return true;
+    } else if (this.date < other.getDate()) {
+      return false;
+    } else {
+      return false; // In this case it is the same date, thus it is not past
+    }
   }
 }
