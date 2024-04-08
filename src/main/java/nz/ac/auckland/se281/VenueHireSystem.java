@@ -270,6 +270,12 @@ public class VenueHireSystem {
   }
 
   public void printBookings(String venueCode) {
+    // Check if there is no venue
+    if (venueList.isEmpty()) {
+      MessageCli.PRINT_BOOKINGS_VENUE_NOT_FOUND.printMessage(venueCode);
+      return;
+    }
+
     // Check if there is no venue with the code
     Boolean noCode = true;
     for (Venue venue : venueList) {
