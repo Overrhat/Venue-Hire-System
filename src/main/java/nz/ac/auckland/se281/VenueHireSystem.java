@@ -338,6 +338,21 @@ public class VenueHireSystem {
   }
 
   public void viewInvoice(String bookingReference) {
-    // TODO implement this method
+    // Check if the bookingReference does not exist
+    Boolean noReference = true;
+    for (Booking booking : bookingsList) {
+      String reference = booking.getReference();
+      if (reference.equals(bookingReference)) {
+        noReference = false;
+        break;
+      }
+    }
+    if (noReference) {
+      MessageCli.VIEW_INVOICE_BOOKING_NOT_FOUND.printMessage(bookingReference);
+      return;
+    }
+
+    // Printe the invoice
+
   }
 }
