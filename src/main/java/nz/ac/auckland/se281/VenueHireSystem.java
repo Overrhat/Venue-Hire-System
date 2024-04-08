@@ -260,7 +260,8 @@ public class VenueHireSystem {
 
     // Generate an instance of a Booking with BookingReference Generator
     String reference = BookingReferenceGenerator.generateBookingReference();
-    Booking booking = new Booking(reference, options[0], options[1], options[2], newAttendees);
+    Booking booking =
+        new Booking(reference, options[0], options[1], options[2], newAttendees, systemDate);
 
     // Add to the booking list
     bookingsList.add(booking);
