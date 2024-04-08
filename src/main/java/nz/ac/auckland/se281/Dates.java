@@ -94,4 +94,10 @@ public class Dates {
     // Return a new Dates object representing the next date
     return new Dates(String.format("%02d/%02d/%04d", nextDate, nextMonth, nextYear));
   }
+
+  public void updateDate(Dates newDate) {
+    this.date = newDate.getDate();
+    this.month = newDate.getMonth();
+    this.year = newDate.getYear();
+  }
 }
