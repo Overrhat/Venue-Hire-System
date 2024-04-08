@@ -298,25 +298,30 @@ public class VenueHireSystem {
       }
     }
 
+    // Get the venue name
+    String venueName = "";
+    for (Venue venue : venueList) {
+      String code = venue.getVenueCode();
+      if (venueCode.equals(code)) {
+        venueName = venue.getVenueName();
+        break;
+      }
+    }
+
     // Check if there is no bookings for specified venue
     if (venueBookingList.isEmpty()) {
-      // Get the venue name
-      String venueName = "";
-      for (Venue venue : venueList) {
-        String code = venue.getVenueCode();
-        if (venueCode.equals(code)) {
-          venueName = venue.getVenueName();
-          break;
-        }
-      }
-
       MessageCli.PRINT_BOOKINGS_HEADER.printMessage(venueName);
       MessageCli.PRINT_BOOKINGS_NONE.printMessage(venueName);
       return;
     }
 
     // Print all the bookings
-
+    MessageCli.PRINT_BOOKINGS_HEADER.printMessage(venueName);
+    for (Booking booking : venueBookingList) {
+      String reference = booking.getReference();
+      String bookingDate = booking.getDate();
+      MessageCli.PRINT_BOOKINGS_ENTRY.printMessage(reference, bookingDate);
+    }
   }
 
   public void addCateringService(String bookingReference, CateringType cateringType) {
