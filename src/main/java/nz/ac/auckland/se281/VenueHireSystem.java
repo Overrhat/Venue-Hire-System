@@ -270,7 +270,47 @@ public class VenueHireSystem {
   }
 
   public void printBookings(String venueCode) {
-    // TODO implement this method
+    // Check if there is no venue with the code
+    Boolean noCode = true;
+    for (Venue venue : venueList) {
+      String code = venue.getVenueCode();
+      if (venueCode.equals(code)) {
+        noCode = false;
+        break;
+      }
+    }
+    if (noCode) {
+      MessageCli.PRINT_BOOKINGS_VENUE_NOT_FOUND.printMessage(venueCode);
+      return;
+    }
+
+    // Make an arrayList containing the booking with the specified venue
+    ArrayList<Booking> venueBookingList = new ArrayList<Booking>();
+    for (Booking booking : bookingsList) {
+      if (booking.getVenueCode().equals(venueCode)) {
+        venueBookingList.add(booking); // Creates a booking list for the specific venue
+      }
+    }
+
+    // Check if there is no bookings for specified venue
+    if (venueBookingList.isEmpty()) {
+      // Get the venue name
+      String venueName = "";
+      for (Venue venue : venueList) {
+        String code = venue.getVenueCode();
+        if (venueCode.equals(code)) {
+          venueName = venue.getVenueName();
+          break;
+        }
+      }
+
+      MessageCli.PRINT_BOOKINGS_HEADER.printMessage(venueName);
+      MessageCli.PRINT_BOOKINGS_NONE.printMessage(venueName);
+      return;
+    }
+
+    // Print all the bookings
+
   }
 
   public void addCateringService(String bookingReference, CateringType cateringType) {
