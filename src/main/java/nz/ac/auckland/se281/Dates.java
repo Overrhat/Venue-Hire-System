@@ -58,39 +58,40 @@ public class Dates {
   }
 
   public Dates getNextDate() {
-    // Check if it's the end of the month
-    if ((this.month == 4 || this.month == 6 || this.month == 9 || this.month == 11)
-        && this.date == 30) {
-      this.month++;
-      this.date = 1;
-    } else if (this.month == 2) { // February
+    int nextDate = this.date;
+    int nextMonth = this.month;
+    int nextYear = this.year;
+
+    // Modify the date, month, and year accordingly
+    if ((nextMonth == 4 || nextMonth == 6 || nextMonth == 9 || nextMonth == 11) && nextDate == 30) {
+      nextMonth++;
+      nextDate = 1;
+    } else if (nextMonth == 2) { // February
       // Check if it's a leap year
-      if ((this.year % 4 == 0 && this.year % 100 != 0) || (this.year % 400 == 0)) {
-        if (this.date == 29) {
-          this.month++;
-          this.date = 1;
+      if ((nextYear % 4 == 0 && nextYear % 100 != 0) || (nextYear % 400 == 0)) {
+        if (nextDate == 29) {
+          nextMonth++;
+          nextDate = 1;
         }
       } else {
-        if (this.date == 28) {
-          this.month++;
-          this.date = 1;
+        if (nextDate == 28) {
+          nextMonth++;
+          nextDate = 1;
         }
       }
-    } else if (this.date == 31) { // End of month for months with 31 days
-      if (this.month == 12) { // End of the year
-        this.year++;
-        this.month = 1;
+    } else if (nextDate == 31) { // End of month for months with 31 days
+      if (nextMonth == 12) { // End of the year
+        nextYear++;
+        nextMonth = 1;
       } else {
-        this.month++;
+        nextMonth++;
       }
-      this.date = 1;
+      nextDate = 1;
     } else { // For all other cases, just increment the date
-      this.date++;
+      nextDate++;
     }
 
-    this.fullDates = String.format("%02d/%02d/%04d", this.date, this.month, this.year);
-
-    // Return the updated Dates object
-    return this;
+    // Return a new Dates object representing the next date
+    return new Dates(String.format("%02d/%02d/%04d", nextDate, nextMonth, nextYear));
   }
 }
