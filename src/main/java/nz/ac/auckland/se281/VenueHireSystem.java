@@ -64,6 +64,52 @@ public class VenueHireSystem {
       Dates nextAvailableDate = new Dates(systemDate); // Initialize with the current system date
 
       // Check if there are bookings for this venue
+      ArrayList<Booking> venueBookingList = new ArrayList<Booking>();
+      for (Booking booking : bookingsList) {
+        if (booking.getVenueCode().equals(code)) {
+          venueBookingList.add(booking); // Creates a booking list for the specific venue
+        }
+      }
+
+      // If there is no bookings
+      if (venueBookingList.isEmpty()) {
+        MessageCli.VENUE_ENTRY.printMessage(name, code, capacity, hireFee, systemDate);
+        continue;
+      }
+
+      // Get the earliest date
+      Dates earliestDate =
+          new Dates(
+              venueBookingList
+                  .get(0)
+                  .getDate()); // Initialise the earliest date to be the first index
+      for (int i = 1; i < venueBookingList.size(); i++) {
+        Dates newDate = new Dates(venueBookingList.get(i).getDate());
+        if (earliestDate.isOtherDatePast(newDate)) {
+          earliestDate = newDate;
+        }
+      }
+
+      // Find the closest date possible
+      Boolean noBooking = false;
+      int daysChecked = 0;
+      while (noBooking == false && daysChecked < 365) {
+        earliestDate.updateDate(earliestDate.getNextDate());
+        daysChecked++;
+        Boolean continueChecker = false;
+        for (int i = 0; i < venueBookingList.size(); i++) {
+          Dates newDate = new Dates(venueBookingList.get(i).getDate());
+          if (earliestDate.getFullDates().equals(newDate.getFullDates())) {
+            continueChecker = true;
+            break;
+          }
+        }
+        if (continueChecker == false) {
+          noBooking = true;
+          nextAvailableDate = earliestDate;
+          break;
+        }
+      }
 
       // Print the venue entry
       String nextDate = nextAvailableDate.getFullDates();
