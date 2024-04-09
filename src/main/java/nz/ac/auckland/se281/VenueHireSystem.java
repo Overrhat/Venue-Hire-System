@@ -472,7 +472,10 @@ public class VenueHireSystem {
           String musicFeeString = Integer.toString(musicFee);
           MessageCli.INVOICE_CONTENT_MUSIC_ENTRY.printMessage(musicFeeString);
         } else { // For Floral service
-
+          String floralType = ((Floral) service).getFloralTypeName();
+          floralFee = ((Floral) service).getFloralTypeCost();
+          String floralFeeString = Integer.toString(floralFee);
+          MessageCli.INVOICE_CONTENT_FLORAL_ENTRY.printMessage(floralType, floralFeeString);
         }
       }
     }
