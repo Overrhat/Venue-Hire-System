@@ -344,6 +344,9 @@ public class VenueHireSystem {
     // Add service
     Services service = new Catering(bookingReference, cateringType);
     servicesList.add(service);
+    String cateringName = ((Catering) service).getCateringTypeName();
+    String printingName = String.format("Catering (%s)", cateringName);
+    MessageCli.ADD_SERVICE_SUCCESSFUL.printMessage(printingName, bookingReference);
   }
 
   public void addServiceMusic(String bookingReference) {
