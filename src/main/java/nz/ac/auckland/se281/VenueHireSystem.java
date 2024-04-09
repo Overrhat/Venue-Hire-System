@@ -386,7 +386,11 @@ public class VenueHireSystem {
     }
 
     // Add service
-
+    Services service = new Floral(bookingReference, floralType);
+    servicesList.add(service);
+    String floralName = ((Floral) service).getFloralTypeName();
+    String printingName = String.format("Floral (%s)", floralName);
+    MessageCli.ADD_SERVICE_SUCCESSFUL.printMessage(printingName, bookingReference);
   }
 
   public void viewInvoice(String bookingReference) {
