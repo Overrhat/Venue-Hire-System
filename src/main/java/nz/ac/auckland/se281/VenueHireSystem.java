@@ -450,6 +450,7 @@ public class VenueHireSystem {
     int musicFee = 0;
     int floralFee = 0;
     int totalFee = 0;
+    int guestsNumber = Integer.parseInt(guests);
 
     // Print the rest of the invoice
     if (bookingServices.isEmpty()) { // When there is no services
@@ -458,8 +459,14 @@ public class VenueHireSystem {
     } else { // Check services
       for (Services service : bookingServices) {
         Services.Type serviceType = service.getServiceType();
-        if (serviceType == Services.Type.Catering) { // For Catering service
 
+        // Check for each type of services
+        if (serviceType == Services.Type.Catering) { // For Catering service
+          String cateringName = ((Catering) service).getCateringTypeName();
+          int cateringFeePerPerson = ((Catering) service).getCateringTypeCostPerPerson();
+          cateringFee = cateringFeePerPerson * guestsNumber;
+          String cateringFeeString = Integer.toString(cateringFee);
+          MessageCli.INVOICE_CONTENT_CATERING_ENTRY.printMessage(cateringName, cateringFeeString);
         } else if (serviceType == Services.Type.Music) { // For Music service
 
         } else { // For Floral service
