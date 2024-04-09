@@ -4,6 +4,12 @@ public abstract class Services extends Object {
 
   protected String bookingReference;
 
+  public enum Type {
+    Catering,
+    Music,
+    Floral
+  }
+
   public Services(String bookingReference) {
     this.bookingReference = bookingReference;
   }
@@ -11,4 +17,6 @@ public abstract class Services extends Object {
   public String getBookingReference() {
     return this.bookingReference;
   }
+
+  public abstract Type getServiceType();
 }
