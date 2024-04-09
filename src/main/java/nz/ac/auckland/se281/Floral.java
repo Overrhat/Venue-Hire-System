@@ -13,6 +13,14 @@ public class Floral extends Services {
     return this.floralType;
   }
 
+  public String getFloralTypeName() {
+    return this.floralType.getName();
+  }
+
+  public int getFloralTypeCost() {
+    return this.floralType.getCost();
+  }
+
   @Override
   public Type getServiceType() {
     return Services.Type.Floral;
