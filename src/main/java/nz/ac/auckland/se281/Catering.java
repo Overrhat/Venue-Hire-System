@@ -12,4 +12,9 @@ public class Catering extends Services {
   public Types getCateringType() {
     return this.cateringType;
   }
+
+  @Override
+  public Type getServiceType() {
+    return Services.Type.Catering;
+  }
 }
