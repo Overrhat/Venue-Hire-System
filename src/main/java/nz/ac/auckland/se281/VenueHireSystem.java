@@ -9,6 +9,7 @@ public class VenueHireSystem {
   private ArrayList<Venue> venueList = new ArrayList<Venue>();
   private String systemDate = "";
   private ArrayList<Booking> bookingsList = new ArrayList<Booking>();
+  private ArrayList<Services> servicesList = new ArrayList<Services>();
 
   public VenueHireSystem() {}
 
