@@ -326,15 +326,32 @@ public class VenueHireSystem {
   }
 
   public void addCateringService(String bookingReference, CateringType cateringType) {
-    // TODO implement this method
+    // Check if there is no booking reference
+    Boolean noReference = true;
+    for (Booking booking : bookingsList) {
+      String reference = booking.getReference();
+      if (reference.equals(bookingReference)) {
+        noReference = false;
+        break;
+      }
+    }
+    if (noReference) {
+      MessageCli.SERVICE_NOT_ADDED_BOOKING_NOT_FOUND.printMessage("Catering", bookingReference);
+      return;
+    }
+
+    // Add service
+
   }
 
   public void addServiceMusic(String bookingReference) {
-    // TODO implement this method
+    // Check if there is no booking reference
+
   }
 
   public void addServiceFloral(String bookingReference, FloralType floralType) {
-    // TODO implement this method
+    // Check if there is no booking reference
+
   }
 
   public void viewInvoice(String bookingReference) {
