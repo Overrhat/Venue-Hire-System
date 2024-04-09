@@ -437,5 +437,14 @@ public class VenueHireSystem {
     MessageCli.INVOICE_CONTENT_VENUE_FEE.printMessage(hireFeeString);
 
     // Find all the services for the booking
+    ArrayList<Services> bookingServices = new ArrayList<Services>();
+    for (Services service : servicesList) {
+      String bookingRef = service.getBookingReference();
+      if (bookingRef.equals(bookingReference)) {
+        bookingServices.add(service);
+      }
+    }
+
+    // Print the rest of the invoice
   }
 }
