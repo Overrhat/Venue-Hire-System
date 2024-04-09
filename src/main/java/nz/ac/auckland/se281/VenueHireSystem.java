@@ -394,12 +394,14 @@ public class VenueHireSystem {
   }
 
   public void viewInvoice(String bookingReference) {
-    // Check if the bookingReference does not exist
+    // Check if the bookingReference does not exist and get the booking
     Boolean noReference = true;
+    Booking invoiceBooking = null;
     for (Booking booking : bookingsList) {
       String reference = booking.getReference();
       if (reference.equals(bookingReference)) {
         noReference = false;
+        invoiceBooking = booking;
         break;
       }
     }
@@ -408,7 +410,25 @@ public class VenueHireSystem {
       return;
     }
 
-    // Printe the invoice
+    // Get the venue of the booking
+    String code = invoiceBooking.getVenueCode();
+    Venue bookingVenue = null;
+    for (Venue venue : venueList) {
+      String venueCode = venue.getVenueCode();
+      if (code.equals(venueCode)) {
+        bookingVenue = venue;
+        break;
+      }
+    }
+    // Get the details needed for invoice content top half
+    String venueName = bookingVenue.getVenueName();
+    String customerEmail = invoiceBooking.getEmail();
+    String dateBooked = invoiceBooking.getDateBooked();
+    String partyDate = invoiceBooking.getDate();
+    String guests = invoiceBooking.getAttendees();
 
+    // Print the invoice content top half
+    MessageCli.INVOICE_CONTENT_TOP_HALF.printMessage(
+        bookingReference, customerEmail, dateBooked, partyDate, guests, venueName);
   }
 }
