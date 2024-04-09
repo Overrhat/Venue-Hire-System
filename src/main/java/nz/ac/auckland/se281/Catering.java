@@ -13,6 +13,14 @@ public class Catering extends Services {
     return this.cateringType;
   }
 
+  public String getCateringTypeName() {
+    return this.cateringType.getName();
+  }
+
+  public int getCateringTypeCostPerPerson() {
+    return this.cateringType.getCostPerPerson();
+  }
+
   @Override
   public Type getServiceType() {
     return Services.Type.Catering;
