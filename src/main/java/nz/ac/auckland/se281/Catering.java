@@ -2,14 +2,14 @@ package nz.ac.auckland.se281;
 
 public class Catering extends Services {
 
-  private final Types cateringType;
+  private final Types.CateringType cateringType;
 
-  public Catering(String bookingReference, Types cateringType) {
+  public Catering(String bookingReference, Types.CateringType cateringType) {
     super(bookingReference);
     this.cateringType = cateringType;
   }
 
-  public Types getCateringType() {
+  public Types.CateringType getCateringType() {
     return this.cateringType;
   }
 
