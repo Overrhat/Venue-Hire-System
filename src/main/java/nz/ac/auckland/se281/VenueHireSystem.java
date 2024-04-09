@@ -445,6 +445,32 @@ public class VenueHireSystem {
       }
     }
 
+    // Initialize fees
+    int cateringFee = 0;
+    int musicFee = 0;
+    int floralFee = 0;
+    int totalFee = 0;
+
     // Print the rest of the invoice
+    if (bookingServices.isEmpty()) { // When there is no services
+      MessageCli.INVOICE_CONTENT_BOTTOM_HALF.printMessage(hireFeeString);
+      return;
+    } else { // Check services
+      for (Services service : bookingServices) {
+        Services.Type serviceType = service.getServiceType();
+        if (serviceType == Services.Type.Catering) { // For Catering service
+
+        } else if (serviceType == Services.Type.Music) { // For Music service
+
+        } else { // For Floral service
+
+        }
+      }
+    }
+
+    totalFee = venueHireFee + cateringFee + musicFee + floralFee;
+    String totalFeeString = Integer.toString(totalFee);
+    // Print the bottom half invoice content
+    MessageCli.INVOICE_CONTENT_BOTTOM_HALF.printMessage(totalFeeString);
   }
 }
