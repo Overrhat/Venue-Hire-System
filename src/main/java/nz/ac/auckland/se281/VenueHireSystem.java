@@ -468,7 +468,9 @@ public class VenueHireSystem {
           String cateringFeeString = Integer.toString(cateringFee);
           MessageCli.INVOICE_CONTENT_CATERING_ENTRY.printMessage(cateringName, cateringFeeString);
         } else if (serviceType == Services.Type.Music) { // For Music service
-
+          musicFee = 500;
+          String musicFeeString = Integer.toString(musicFee);
+          MessageCli.INVOICE_CONTENT_MUSIC_ENTRY.printMessage(musicFeeString);
         } else { // For Floral service
 
         }
