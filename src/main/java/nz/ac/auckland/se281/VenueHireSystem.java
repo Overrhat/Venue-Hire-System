@@ -430,5 +430,12 @@ public class VenueHireSystem {
     // Print the invoice content top half
     MessageCli.INVOICE_CONTENT_TOP_HALF.printMessage(
         bookingReference, customerEmail, dateBooked, partyDate, guests, venueName);
+
+    // Get venue hire fee and print
+    int venueHireFee = bookingVenue.getHireFee();
+    String hireFeeString = Integer.toString(venueHireFee);
+    MessageCli.INVOICE_CONTENT_VENUE_FEE.printMessage(hireFeeString);
+
+    // Find all the services for the booking
   }
 }
