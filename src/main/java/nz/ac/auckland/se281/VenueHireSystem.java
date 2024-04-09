@@ -365,6 +365,20 @@ public class VenueHireSystem {
 
   public void addServiceFloral(String bookingReference, FloralType floralType) {
     // Check if there is no booking reference
+    Boolean noReference = true;
+    for (Booking booking : bookingsList) {
+      String reference = booking.getReference();
+      if (reference.equals(bookingReference)) {
+        noReference = false;
+        break;
+      }
+    }
+    if (noReference) {
+      MessageCli.SERVICE_NOT_ADDED_BOOKING_NOT_FOUND.printMessage("Floral", bookingReference);
+      return;
+    }
+
+    // Add service
 
   }
 
