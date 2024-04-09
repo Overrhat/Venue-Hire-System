@@ -365,7 +365,9 @@ public class VenueHireSystem {
     }
 
     // Add service
-
+    Services service = new Music(bookingReference);
+    servicesList.add(service);
+    MessageCli.ADD_SERVICE_SUCCESSFUL.printMessage("Music", bookingReference);
   }
 
   public void addServiceFloral(String bookingReference, FloralType floralType) {
