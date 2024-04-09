@@ -346,6 +346,20 @@ public class VenueHireSystem {
 
   public void addServiceMusic(String bookingReference) {
     // Check if there is no booking reference
+    Boolean noReference = true;
+    for (Booking booking : bookingsList) {
+      String reference = booking.getReference();
+      if (reference.equals(bookingReference)) {
+        noReference = false;
+        break;
+      }
+    }
+    if (noReference) {
+      MessageCli.SERVICE_NOT_ADDED_BOOKING_NOT_FOUND.printMessage("Music", bookingReference);
+      return;
+    }
+
+    // Add service
 
   }
 
