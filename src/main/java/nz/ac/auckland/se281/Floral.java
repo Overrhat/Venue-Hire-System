@@ -12,4 +12,9 @@ public class Floral extends Services {
   public Types getFloralType() {
     return this.floralType;
   }
+
+  @Override
+  public Type getServiceType() {
+    return Services.Type.Floral;
+  }
 }
