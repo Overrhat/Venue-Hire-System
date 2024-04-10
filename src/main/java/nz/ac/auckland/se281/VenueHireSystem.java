@@ -61,6 +61,12 @@ public class VenueHireSystem {
       String capacity = Integer.toString(venue.getCapacity());
       String hireFee = Integer.toString(venue.getHireFee());
 
+      // If system date is not set then just print without date
+      if (systemDate.isEmpty() || systemDate.equals(null)) {
+        MessageCli.VENUE_ENTRY.printMessage(name, code, capacity, hireFee);
+        continue;
+      }
+
       // Find the next available date for the venue
       Dates nextAvailableDate = new Dates(systemDate); // Initialize with the current system date
 
