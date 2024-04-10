@@ -97,26 +97,17 @@ public class VenueHireSystem {
         }
       }
 
-      // Find the closest date possible
-      Boolean noBooking = false;
-      int daysChecked = 0;
-      while (noBooking == false && daysChecked < 365) {
-        earliestDate.updateDate(earliestDate.getNextDate());
-        daysChecked++;
-        Boolean continueChecker = false;
-        for (int i = 0; i < venueBookingList.size(); i++) {
-          Dates newDate = new Dates(venueBookingList.get(i).getDate());
-          if (earliestDate.getFullDates().equals(newDate.getFullDates())) {
-            continueChecker = true;
-            break;
-          }
-        }
-        if (continueChecker == false) {
-          noBooking = true;
-          nextAvailableDate = earliestDate;
+      // Check until finds the available date
+      for (Booking booking : venueBookingList) {
+        earliestDate.updateDate((earliestDate.getNextDate()));
+        String bookingDateString = booking.getDate();
+        if ((earliestDate.getFullDates()).equals((bookingDateString))) {
+          continue;
+        } else {
           break;
         }
       }
+      nextAvailableDate = earliestDate;
 
       // Print the venue entry
       String nextDate = nextAvailableDate.getFullDates();
