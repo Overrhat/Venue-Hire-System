@@ -57,48 +57,31 @@ public class Dates {
     }
   }
 
-  public Dates getNextDate() {
-    int nextDate = this.date;
-    int nextMonth = this.month;
-    int nextYear = this.year;
-
-    // Modify the date, month, and year accordingly
-    if ((nextMonth == 4 || nextMonth == 6 || nextMonth == 9 || nextMonth == 11) && nextDate == 30) {
-      nextMonth++;
-      nextDate = 1;
-    } else if (nextMonth == 2) { // February
-      // Check if it's a leap year
-      if ((nextYear % 4 == 0 && nextYear % 100 != 0) || (nextYear % 400 == 0)) {
-        if (nextDate == 29) {
-          nextMonth++;
-          nextDate = 1;
-        }
-      } else {
-        if (nextDate == 28) {
-          nextMonth++;
-          nextDate = 1;
-        }
-      }
-    } else if (nextDate == 31) { // End of month for months with 31 days
-      if (nextMonth == 12) { // End of the year
-        nextYear++;
-        nextMonth = 1;
-      } else {
-        nextMonth++;
-      }
-      nextDate = 1;
-    } else { // For all other cases, just increment the date
-      nextDate++;
-    }
-
-    // Return a new Dates object representing the next date
-    return new Dates(String.format("%02d/%02d/%04d", nextDate, nextMonth, nextYear));
-  }
-
   public void updateDate(Dates newDate) {
     this.date = newDate.getDate();
     this.month = newDate.getMonth();
     this.year = newDate.getYear();
     this.fullDates = newDate.getFullDates();
+  }
+
+  public Dates getNextDate() {
+    // calculate the next date
+    int nextDay = this.date + 1;
+    int nextMonth = this.month;
+    int nextYear = this.year;
+
+    // adjust for end of month
+    if (nextDay > 30) {
+      nextDay = 1;
+      nextMonth++;
+      if (nextMonth > 12) {
+        nextMonth = 1;
+        nextYear++;
+      }
+    }
+
+    String dates = String.format("%02d/%02d/%04d", nextDay, nextMonth, nextYear);
+    // return a new Dates object that represents the next date
+    return new Dates(dates);
   }
 }
