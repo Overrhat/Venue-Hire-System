@@ -99,5 +99,6 @@ public class Dates {
     this.date = newDate.getDate();
     this.month = newDate.getMonth();
     this.year = newDate.getYear();
+    this.fullDates = newDate.getFullDates();
   }
 }
