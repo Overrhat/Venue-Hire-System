@@ -392,9 +392,9 @@ public class VenueHireSystem {
     }
 
     // Add service
-    Services service = new Floral(bookingReference, floralType);
+    Services service = new FloralService(bookingReference, floralType);
     servicesList.add(service);
-    String floralName = ((Floral) service).getFloralTypeName();
+    String floralName = ((FloralService) service).getFloralTypeName();
     String printingName = String.format("Floral (%s)", floralName);
     MessageCli.ADD_SERVICE_SUCCESSFUL.printMessage(printingName, bookingReference);
   }
@@ -478,8 +478,8 @@ public class VenueHireSystem {
           String musicFeeString = Integer.toString(musicFee);
           MessageCli.INVOICE_CONTENT_MUSIC_ENTRY.printMessage(musicFeeString);
         } else { // For Floral service
-          String floralType = ((Floral) service).getFloralTypeName();
-          floralFee = ((Floral) service).getFloralTypeCost();
+          String floralType = ((FloralService) service).getFloralTypeName();
+          floralFee = ((FloralService) service).getFloralTypeCost();
           String floralFeeString = Integer.toString(floralFee);
           MessageCli.INVOICE_CONTENT_FLORAL_ENTRY.printMessage(floralType, floralFeeString);
         }
