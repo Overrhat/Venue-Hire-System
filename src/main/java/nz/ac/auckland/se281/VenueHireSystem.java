@@ -270,7 +270,7 @@ public class VenueHireSystem {
       MessageCli.BOOKING_ATTENDEES_ADJUSTED.printMessage(
           options[3], newAttendees, Integer.toString(venueCapacity));
     } else {
-      newAttendees = options[3];
+      newAttendees = Integer.toString(attendees);
     }
 
     // Generate an instance of a Booking with BookingReference Generator
