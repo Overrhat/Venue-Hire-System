@@ -97,6 +97,14 @@ public class VenueHireSystem {
         }
       }
 
+      // Check if the systemdate has no booking
+      if (earliestDate.isOtherDatePast(nextAvailableDate)) {
+        // Print the venue entry
+        String nextDate = nextAvailableDate.getFullDates();
+        MessageCli.VENUE_ENTRY.printMessage(name, code, capacity, hireFee, nextDate);
+        return;
+      }
+
       // Find the closest date possible
       Boolean noBooking = false;
       int daysChecked = 0;
