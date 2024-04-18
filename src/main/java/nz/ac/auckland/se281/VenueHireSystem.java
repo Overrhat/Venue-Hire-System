@@ -255,6 +255,7 @@ public class VenueHireSystem {
     int venueCapacity = 0;
     String newAttendees = "";
     int attendees = Integer.parseInt(options[3]);
+    String attendeeString = Integer.toString(attendees);
     for (Venue venue : venueList) {
       String code = venue.getVenueCode();
       if (code.equals(options[0])) {
@@ -264,11 +265,12 @@ public class VenueHireSystem {
     }
     if (attendees > venueCapacity) {
       newAttendees = Integer.toString(venueCapacity);
-      MessageCli.BOOKING_ATTENDEES_ADJUSTED.printMessage(options[3], newAttendees, newAttendees);
+      MessageCli.BOOKING_ATTENDEES_ADJUSTED.printMessage(
+          attendeeString, newAttendees, newAttendees);
     } else if (attendees < (0.25 * venueCapacity)) {
       newAttendees = Integer.toString((int) (0.25 * venueCapacity));
       MessageCli.BOOKING_ATTENDEES_ADJUSTED.printMessage(
-          options[3], newAttendees, Integer.toString(venueCapacity));
+          attendeeString, newAttendees, Integer.toString(venueCapacity));
     } else {
       newAttendees = Integer.toString(attendees);
     }
