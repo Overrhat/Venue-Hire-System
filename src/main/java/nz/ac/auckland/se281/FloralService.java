@@ -1,10 +1,10 @@
 package nz.ac.auckland.se281;
 
-public class Floral extends Services {
+public class FloralService extends Services {
 
   private final Types.FloralType floralType;
 
-  public Floral(String bookingReference, Types.FloralType floralType) {
+  public FloralService(String bookingReference, Types.FloralType floralType) {
     super(bookingReference);
     this.floralType = floralType;
   }
